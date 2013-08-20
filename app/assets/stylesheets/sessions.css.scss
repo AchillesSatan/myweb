@@ -1,0 +1,21 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#signup_link {
+	text-align: right;
+	font-weight: bold;
+	list-style-type: none;
+	a {
+		color: #007492;
+		text-decoration: none;
+		&:hover {
+			color: #1e8cbe;
+			background-color: white;
+		}
+	}
+}
+
+#signin {
+	float: left;
+}
