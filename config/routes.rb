@@ -1,9 +1,16 @@
 Myweb::Application.routes.draw do
+  #get "user_search"
+
   get "sessions/new"
 
   get "sessions/create"
 
   get "sessions/destroy"
+
+  controller :user_search do
+    post 'user_search' => :search
+    get  'user_search' => :show
+  end
 
   resources :users
 

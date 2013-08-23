@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
+
+  skip_before_filter :authorize, only: [:create, :new]
+  skip_before_filter :administor, only: [:show, :new, :edit, :create, :update, :destroy]
+  skip_before_filter :correct_user, only: [:index, :new, :create]
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @users = User.paginate page: params[:page], per_page: 10
+  #  @users = User.all
+    @users = User.paginate page: params[:page], per_page: 5
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +49,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_email] = @user.email
         flash[:success] = "User #{@user.name} was successfully created."
         format.html { redirect_to @user } #, notice: "User #{@user.name} was successfully created." }
         format.json { render json: @user, status: :created, location: @user }
@@ -83,4 +88,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

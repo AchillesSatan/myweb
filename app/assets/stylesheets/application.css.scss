@@ -191,14 +191,14 @@ aside {
   margin: 0;
   #user_list {
     overflow: auto;
-    padding: 10px 10px;
+    padding: 10px 10px; 
     border-top: 1px solid $grayLighter;
     &:last-child {
       border-bottom: 1px solid $grayLighter;
     }
     td {
     	overflow: auto;
-    	padding: 10px 10px;
+    /*	padding: 10px 10px; */
   	}
   }
 }

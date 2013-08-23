@@ -1,4 +1,4 @@
-<h1>All Users</h1>
+<h1>User List</h1>
 
 <% if notice %>
 <p id="notice"><%= notice %></p>
@@ -6,16 +6,16 @@
 
 <div class="row">
   <div class="span6 offset3">
+    
+    <%= render 'user_search/search' %>
 
     <%= render 'user' %>
 
+    <div class="paginate">
+      <%= will_paginate @users, :previous_label => 'Prev', :next_label => "Next" %>
+    </div>
 
-
-<div class="paginate">
-  <%= will_paginate %>
-</div>
-
-</div>
+  </div>
 </div>
 <br />
 

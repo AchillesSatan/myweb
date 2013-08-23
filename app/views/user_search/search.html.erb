@@ -1,21 +1,44 @@
-<table class="users">
-  <tr>
+<div class="alert alert-success">
+	About <%= pluralize(@users_result.count.to_s, "result") %>.
+</div>
+
+<h1>Search Resault</h1>
+
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="row">
+  <div class="span6 offset3">
+    
+    <%= render 'search' %>
+
+    <table class="users">
+  	<tr>
     <th class="tableth"></th>
     <th class="tableth">Name</th>
     <th class="tableth">E-Mail</th>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  	</tr>
 
-<% @users.each do |user| %>
-  <tr id="user_list">
+	<% @users_result.each do |user| %>
+  	<tr id="user_list">
     <td class="tableth"><%= gravatar_for user, size: 40 %></td>
     <td class="tableth"><%= link_to user.name, user %></td>
     <td class="tableth"><%= user.email %></td>
     <td style="padding-right:10px;"><%= link_to 'Show', user %></td>
     <td style="padding-right:10px;"><%= link_to 'Edit', edit_user_path(user) %></td>
     <td style="padding-right:10px;"><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  	</tr>
+	<% end %>
+	</table>
+
+	<div class="paginate">
+      <%= will_paginate @users_result, :previous_label => 'Prev', :next_label => "Next" %>
+    </div>
+
+  </div>
+</div>
+<br />
