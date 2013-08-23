@@ -1,241 +1,99 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ruby on Rails: Welcome aboard</title>
-    <style type="text/css" media="screen">
-      body {
-        margin: 0;
-        margin-bottom: 25px;
-        padding: 0;
-        background-color: #f0f0f0;
-        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
-        font-size: 13px;
-        color: #333;
+    <meta charset="utf-8">
+    <title>梦想天空</title>
+    <link href="assets/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <style>
+      .content {
+        margin: 100px;
       }
 
-      h1 {
-        font-size: 28px;
-        color: #000;
-      }
-
-      a  {color: #03c}
-      a:hover {
-        background-color: #03c;
-        color: white;
-        text-decoration: none;
-      }
-
-
-      #page {
-        background-color: #f0f0f0;
-        width: 750px;
-        margin: 0;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #content {
-        float: left;
-        background-color: white;
-        border: 3px solid #aaa;
-        border-top: none;
-        padding: 25px;
-        width: 500px;
-      }
-
-      #sidebar {
-        float: right;
-        width: 175px;
-      }
-
-      #footer {
-        clear: both;
-      }
-
-      #header, #about, #getting-started {
-        padding-left: 75px;
-        padding-right: 30px;
-      }
-
-
-      #header {
-        background-image: url("assets/rails.png");
-        background-repeat: no-repeat;
-        background-position: top left;
-        height: 64px;
-      }
-      #header h1, #header h2 {margin: 0}
-      #header h2 {
-        color: #888;
-        font-weight: normal;
-        font-size: 16px;
-      }
-
-
-      #about h3 {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 14px;
-      }
-
-      #about-content {
-        background-color: #ffd;
-        border: 1px solid #fc0;
-        margin-left: -55px;
-        margin-right: -10px;
-      }
-      #about-content table {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 11px;
-        border-collapse: collapse;
-      }
-      #about-content td {
-        padding: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
-      #about-content td.name  {color: #555}
-      #about-content td.value {color: #000}
-
-      #about-content ul {
-        padding: 0;
-        list-style-type: none;
-      }
-
-      #about-content.failure {
-        background-color: #fcc;
-        border: 1px solid #f00;
-      }
-      #about-content.failure p {
-        margin: 0;
-        padding: 10px;
-      }
-
-
-      #getting-started {
-        border-top: 1px solid #ccc;
-        margin-top: 25px;
-        padding-top: 15px;
-      }
-      #getting-started h1 {
-        margin: 0;
-        font-size: 20px;
-      }
-      #getting-started h2 {
-        margin: 0;
-        font-size: 14px;
-        font-weight: normal;
-        color: #333;
-        margin-bottom: 25px;
-      }
-      #getting-started ol {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #getting-started li {
-        font-size: 18px;
-        color: #888;
-        margin-bottom: 25px;
-      }
-      #getting-started li h2 {
-        margin: 0;
-        font-weight: normal;
-        font-size: 18px;
-        color: #333;
-      }
-      #getting-started li p {
-        color: #555;
-        font-size: 13px;
-      }
-
-
-      #sidebar ul {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #sidebar ul h3 {
-        margin-top: 25px;
-        font-size: 16px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ccc;
-      }
-      #sidebar li {
-        list-style-type: none;
-      }
-      #sidebar ul.links li {
-        margin-bottom: 5px;
-      }
-
-      .filename {
-        font-style: italic;
+      #editor {
+        resize:vertical; 
+        overflow:auto; 
+        border:1px solid silver; 
+        border-radius:5px; 
+        min-height:100px;
+        box-shadow: inset 0 0 10px silver;
+        padding:1em;
       }
     </style>
-    <script type="text/javascript">
-      function about() {
-        info = document.getElementById('about-content');
-        if (window.XMLHttpRequest)
-          { xhr = new XMLHttpRequest(); }
-        else
-          { xhr = new ActiveXObject("Microsoft.XMLHTTP"); }
-        xhr.open("GET","rails/info/properties",false);
-        xhr.send("");
-        info.innerHTML = xhr.responseText;
-        info.style.display = 'block'
-      }
-    </script>
   </head>
   <body>
-    <div id="page">
-      <div id="sidebar">
-        <ul id="sidebar-items">
-          <li>
-            <h3>Browse the documentation</h3>
-            <ul class="links">
-              <li><a href="http://guides.rubyonrails.org/">Rails Guides</a></li>
-              <li><a href="http://api.rubyonrails.org/">Rails API</a></li>
-              <li><a href="http://www.ruby-doc.org/core/">Ruby core</a></li>
-              <li><a href="http://www.ruby-doc.org/stdlib/">Ruby standard library</a></li>
-            </ul>
-          </li>
-        </ul>
+    <div class="content">
+          <div class="container-fluid">
+            <div id='pad-wrapper'>
+          <div id="editparent">
+            <div id='editControls' class='span9' style=' padding:5px;'>
+              <div class='btn-group'>
+                <a class='btn' data-role='undo' href='#'><i class='icon-undo'></i></a>
+                <a class='btn' data-role='redo' href='#'><i class='icon-repeat'></i></a>
+              </div>
+              <!-- <div class='btn-group'>
+                <a class='btn' data-role='cut' href='#'><i class='icon-cut'></i></a>
+                <a class='btn' data-role='copy' href='#'><i class='icon-copy'></i></a>
+                <a class='btn' data-role='paste' href='#'><i class='icon-paste'></i></a>
+              </div> -->
+              <div class='btn-group'>
+                <a class='btn' data-role='bold' href='#'><b>Bold</b></a>
+                <a class='btn' data-role='italic' href='#'><em>Italic</em></a>
+                <a class='btn' data-role='underline' href='#'><u><b>U</b></u></a>
+                <a class='btn' data-role='strikeThrough' href='#'><strike>abc</strike></a>
+              </div>
+              <div class='btn-group'>
+                <a class='btn' data-role='justifyLeft' href='#'><i class='icon-align-left'></i></a>
+                <a class='btn' data-role='justifyCenter' href='#'><i class='icon-align-center'></i></a>
+                <a class='btn' data-role='justifyRight' href='#'><i class='icon-align-right'></i></a>
+                <a class='btn' data-role='justifyFull' href='#'><i class='icon-align-justify'></i></a>
+              </div>
+              <div class='btn-group'>
+                <a class='btn' data-role='indent' href='#'><i class='icon-indent-right'></i></a>
+                <a class='btn' data-role='outdent' href='#'><i class='icon-indent-left'></i></a>
+              </div>
+              <div class='btn-group'>
+                <a class='btn' data-role='insertUnorderedList' href='#'><i class='icon-list-ul'></i></a>
+                <a class='btn' data-role='insertOrderedList' href='#'><i class='icon-list-ol'></i></a>
+              </div>
+              <div class='btn-group'>
+                <a class='btn' data-role='h1' href='#'>h<sup>1</sup></a>
+                <a class='btn' data-role='h2' href='#'>h<sup>2</sup></a>
+                <a class='btn' data-role='p' href='#'>p</a>
+              </div>
+              <div class='btn-group'>
+                <a class='btn' data-role='subscript' href='#'><i class='icon-subscript'></i></a>
+                <a class='btn' data-role='superscript' href='#'><i class='icon-superscript'></i></a>
+              </div>
+            </div>
+            <div id='editor' class='span9' style='' contenteditable>
+              <h1>世界上最简单的文本编辑器！</h1>
+              <p>梦想天空博客关注<b>前端开发</b>技术，分享各种增强网站用户体验的 <b>jQuery</b> 插件，展示前沿的 <b>HTML5</b> 和 <b>CSS3</b> 技术应用，推荐优秀的网页设计案例，共享精美的设计素材和优秀的 <b>Web</b> 开发工具，希望这些精心整理的前端技术文章能够帮助到您。</p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div id="content">
-        <div id="header">
-          <h1>Welcome aboard</h1>
-          <h2>You&rsquo;re riding Ruby on Rails!</h2>
-        </div>
-
-        <div id="about">
-          <h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
-          <div id="about-content" style="display: none"></div>
-        </div>
-
-        <div id="getting-started">
-          <h1>Getting started</h1>
-          <h2>Here&rsquo;s how to get rolling:</h2>
-
-          <ol>
-            <li>
-              <h2>Use <code>rails generate</code> to create your models and controllers</h2>
-              <p>To see all available options, run it without parameters.</p>
-            </li>
-
-            <li>
-              <h2>Set up a default route and remove <span class="filename">public/index.html</span></h2>
-              <p>Routes are set up in <span class="filename">config/routes.rb</span>.</p>
-            </li>
-
-            <li>
-              <h2>Create your database</h2>
-              <p>Run <code>rake db:create</code> to create your database. If you're not using SQLite (the default), edit <span class="filename">config/database.yml</span> with your username and password.</p>
-            </li>
-          </ol>
-        </div>
-      </div>
-
-      <div id="footer">&nbsp;</div>
     </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+
+      $(function() {
+        $('#editControls a').click(function(e) {
+          switch($(this).data('role')) {
+            case 'h1':
+            case 'h2':
+            case 'p':
+              document.execCommand('formatBlock', false, '<' + $(this).data('role') + '>');
+              break;
+            default:
+              document.execCommand($(this).data('role'), false, null);
+              break;
+          }
+          
+        })
+      });
+
+    </script>
   </body>
 </html>
