@@ -1,4 +1,6 @@
 Myweb::Application.routes.draw do
+  resources :blogs
+
   #get "user_search"
 
   get "sessions/new"

@@ -1,0 +1,116 @@
+ <div class="row">
+    <div class="span9 offset4">
+
+<% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@blog.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @blog.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>Create New Blog</h1>
+
+<%= form_for(@blog) do |f| %>
+
+
+
+  <div class="field">
+    <%= f.text_field :title, placeholder: "Input the title here." %>
+  </div>
+
+  <div class="field">
+  	<%= f.hidden_field :content, id: "blog_content" %>
+  </div>
+
+  <div id='editControls' style=' padding: 1px; margin: 1px; text-align: center;'>
+              <div class='btn-group'>
+                <a class='btn' data-role='undo' href='#'>Undo</a>
+                <a class='btn' data-role='redo' href='#'>Repeat</a>
+              
+              <!-- <div class='btn-group'>
+                <a class='btn' data-role='cut' href='#'><i class='icon-cut'></i></a>
+                <a class='btn' data-role='copy' href='#'><i class='icon-copy'></i></a>
+                <a class='btn' data-role='paste' href='#'><i class='icon-paste'></i></a>
+              </div> -->
+              
+                <a class='btn' data-role='bold' href='#'><b>Bold</b></a>
+                <a class='btn' data-role='italic' href='#'><em>Italic</em></a>
+                <a class='btn' data-role='underline' href='#'><u><b>U</b></u></a>
+                <a class='btn' data-role='strikeThrough' href='#'><strike>abc</strike></a>
+              
+              
+                <a class='btn' data-role='justifyLeft' href='#'><i class='icon-align-left'></i></a>
+                <a class='btn' data-role='justifyCenter' href='#'><i class='icon-align-center'></i></a>
+                <a class='btn' data-role='justifyRight' href='#'><i class='icon-align-right'></i></a>
+                <a class='btn' data-role='justifyFull' href='#'><i class='icon-align-justify'></i></a>
+              
+              
+                <a class='btn' data-role='indent' href='#'><i class='icon-indent-right'></i></a>
+                <a class='btn' data-role='outdent' href='#'><i class='icon-indent-left'></i></a>
+              
+        	  	<br />
+              
+                <a class='btn' data-role='insertUnorderedList' href='#'>ul</a>
+                <a class='btn' data-role='insertOrderedList' href='#'>ol</a>
+             
+              
+                <a class='btn' data-role='h1' href='#'>h<sup>1</sup></a>
+                <a class='btn' data-role='h2' href='#'>h<sup>2</sup></a>
+                <a class='btn' data-role='p' href='#'>p</a>
+              
+
+              
+                <a class='btn' data-role='subscript' href='#'>x<sub>2</a>
+                <a class='btn' data-role='superscript' href='#'>x<sup>2</a>
+              </div>
+    </div>
+
+  <div id='editor' style='height: 600px;' contenteditable></div>
+
+
+    <script>
+
+      $(function() {
+        $('#editControls a').click(function(e) {
+          switch($(this).data('role')) {
+            case 'h1':
+            case 'h2':
+            case 'p':
+              document.execCommand('formatBlock', false, '<' + $(this).data('role') + '>');
+              break;
+            default:
+              document.execCommand($(this).data('role'), false, null);
+              break;
+          }
+          
+        })
+      });
+
+    </script>
+
+
+  <div class="actions">
+    <%= f.submit 'Save Blog', name: "create_blog_button", onClick: "Btn_Click()", class: "btn btn-large btn-primary" %>
+  </div>
+
+  	<script type="text/javascript" async="true"> 
+ 	function Btn_Click(){  
+    	var strArt = document.getElementById("editor").innerHTML;
+    	var objArt=document.getElementById("blog_content");  
+    	objArt.value=strArt; 
+ 	} 
+	</script>
+
+<% end %>
+
+<%= link_to 'Back', blogs_path %>
+
+	</div>
+</div>
+

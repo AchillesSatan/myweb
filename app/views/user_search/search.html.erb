@@ -1,3 +1,4 @@
+<% provide(:search_context, "#{$context}") %>
 <div class="alert alert-success">
 	About <%= pluralize(@users_result.count.to_s, "result") %>.
 </div>
@@ -9,7 +10,7 @@
 <% end %>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span7 offset5">
     
     <%= render 'search' %>
 

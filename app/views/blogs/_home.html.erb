@@ -1,0 +1,14 @@
+<h3><%= blog.title %></h3><br />
+    <b>Author:</b><%= find_author blog.user_id %>
+    <b>Updated:</b><%= blog.updated_at.year %>/<%= blog.updated_at.month %>/<%= blog.updated_at.day %>
+    <br /><br />
+    <div id="hidden_blog" type="hidden" style="display: none;">
+    <%= blog.content %>
+    </div>
+    <div>
+<%= blog.content %>
+    </div>
+    <%= truncate(sanitize(blog.content), length: 100) %>
+    <%= link_to 'Show', blog %></td>
+    <%= link_to 'Edit', edit_blog_path(blog) %></td>
+    <%= link_to 'Destroy', blog, confirm: 'Are you sure?', method: :delete %></td>

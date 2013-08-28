@@ -1,0 +1,43 @@
+<div class="bg"></div>
+<div class="p-bd">
+<div class="g-hd">
+<h1>Achilles's Blog</h1>
+<h2 style="color: white;">すべての出会いが 美しい とは限らない。 すべての別れが 悲しい とは言えない。</h2>
+</div>
+
+<div class="g-mn">
+ <div class="row">
+    <div class="span9 offset4">
+
+<% @blogs.each do |blog| %>
+  <div style="margin-top: 50px;">
+    <h3><%= blog.title %></h3><br />
+    <b>Author:</b><%= find_author blog.user_id %>
+    <b>Updated:</b><%= blog.updated_at.year %>-<%= blog.updated_at.month %>-<%= blog.updated_at.day %>
+    <br /><br />
+    <div id="hidden_blog<%= blog.id %>" type="hidden" style="display: none;">
+    <%= truncate(blog.content, length: 2000) %>
+    </div>
+    <div id="blog_content<%= blog.id %>" >
+      <script type="text/javascript" async="true"> 
+      var strArt = document.getElementById("hidden_blog<%= blog.id %>").innerText;
+      var objArt=document.getElementById("blog_content<%= blog.id %>");  
+      objArt.innerHTML=strArt; 
+      </script>
+    </div>
+    <p style="text-align:center">
+    ......<br />
+    </p>
+    <%= link_to 'Show', blog %></td>
+    <%= link_to 'Edit', edit_blog_path(blog) %></td>
+    <%= link_to 'Destroy', blog, confirm: 'Are you sure?', method: :delete %></td>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to 'New Blog', new_blog_path %>
+</div>
+</div>
+</div>
+</div>

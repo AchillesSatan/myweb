@@ -1,6 +1,6 @@
     <%= form_for(:user_search, url: 'user_search') do |f| %>
     <div id="search_user">
-      <%= f.text_field :search_context, placeholder: "Search Users", class: "search_user"%>
+      <%= f.text_field :search_context, value: yield(:search_context), placeholder: "Search Users", class: "search_user"%>
       <%= f.submit 'Search', name: "user_search_button", class: "btn btn-normal btn-primary search_user" %>
     </div>
     <% end %>

@@ -1,0 +1,71 @@
+<script type="text/javascript" async="true"> 
+
+$(document).ready(function() {
+
+   var anchor = $("#scroll_to_top");    
+   anchor.hide();
+  
+  $(window).scroll(function(event){  	
+      if(getScrollTop() > 150) {                                
+          anchor.fadeIn(300);
+      } else {      	
+          anchor.fadeOut(300);          
+      }
+  });    
+});
+
+function nasScrollTop(_speed){$('html, body').animate({scrollTop:0}, _speed);}
+
+function getScrollTop() {
+    var top = 0;
+    top = top !== 0 ? top : (window.pageYOffset ? window.pageYOffset : 0);
+    top = top !== 0 ? top : (document.documentElement ? document.documentElement.scrollTop : 0);
+    top = top !== 0 ? top : (document.body ? document.body.scrollTop : 0);
+    return top;
+}	
+
+function Blog_Show(){  
+   	var strArt = document.getElementById("blog_content").innerHTML;
+   	var strArt = <%= @blog.content %>
+   	document.write("test");
+} 
+</script>
+<p id="top_menu" style="height: 25px;"></p>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="span9 offset4">
+
+<p>
+  <h3><%= @blog.title %></h3>
+</p>
+
+<p>
+  <br />
+  <b>Author:</b><%= find_author @blog.user_id %>
+  <b>Updated:</b><%= @blog.updated_at.year %>/<%= @blog.updated_at.month %>/<%= @blog.updated_at.day %>
+  <br /><br />
+</p>
+  <div id="hidden_blog" type="hidden" style="display: none;">
+  	<%= @blog.content %>
+  </div>
+
+<p>
+  <div id="blog_content">
+  	  <script type="text/javascript" async="true"> 
+    	var strArt = document.getElementById("hidden_blog").innerText;
+    	var objArt=document.getElementById("blog_content");  
+    	objArt.innerHTML=strArt; 
+	</script>
+  </div>
+</p>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
+<a style="display:block;" title="Scroll To Top" href="#top_menu" onclick="nasScrollTop(300); return false;" id="scroll_to_top">
+	To Top
+</a>
+
+</div>
+</div>

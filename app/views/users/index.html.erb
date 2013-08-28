@@ -1,3 +1,4 @@
+<% provide(:search_context, '') %>
 <h1>User List</h1>
 
 <% if notice %>
@@ -5,7 +6,7 @@
 <% end %>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span7 offset5">
     
     <%= render 'user_search/search' %>
 
@@ -14,6 +15,7 @@
     <div class="paginate">
       <%= will_paginate @users, :previous_label => 'Prev', :next_label => "Next" %>
     </div>
+<%= link_to 'New User', new_user_path %>
 
   </div>
 </div>
@@ -21,4 +23,3 @@
 
 
 
-<%= link_to 'New User', new_user_path %>

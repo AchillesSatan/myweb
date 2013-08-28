@@ -29,8 +29,9 @@ class UserSearchController < ApplicationController
   			redirect_to users_path
   		else
   	#		@users_result = User.find(:all, :conditions => ["name like ?", "%"+params[:user_search][:search_context]+"%"])
+  			@search_context = $context
   			@users_result = User.paginate :conditions => ["name like ? or email like ?", "%"+$context+"%", "%"+$context+"%"], page: params[:page], per_page: 5
-  			if @users_result.empty
+  			if @users_result.empty?
   				flash[:error] = "Your search did not match any documents."
  				redirect_to users_path and return 
   			end
