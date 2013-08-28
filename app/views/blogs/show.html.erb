@@ -41,12 +41,16 @@ function Blog_Show(){
   <h3><%= @blog.title %></h3>
 </p>
 
-<p>
-  <br />
-  <b>Author:</b><%= find_author @blog.user_id %>
-  <b>Updated:</b><%= @blog.updated_at.year %>/<%= @blog.updated_at.month %>/<%= @blog.updated_at.day %>
-  <br /><br />
-</p>
+   <div style="color:rgb(188, 54, 10); font-size:14px; font-family: monospace, serif;">
+    
+    <br />
+    
+    <span><%= get_month(@blog.updated_at.month) %>&nbsp;<%= @blog.updated_at.day %>,&nbsp;<%= @blog.updated_at.year %></span>
+
+    <span style="margin-left: 10px;"><%= find_author @blog.user_id %></span>
+
+    </div>
+
   <div id="hidden_blog" type="hidden" style="display: none;">
   	<%= @blog.content %>
   </div>
