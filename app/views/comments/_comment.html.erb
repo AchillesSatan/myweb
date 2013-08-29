@@ -1,0 +1,17 @@
+<% @blog.comments.each do |comment| %>
+<div style="border-bottom: 1px solid rgb(230, 230, 230); margin-bottom: 10px; margin-top: 10px;">
+<div style="float: left;">
+	<%= get_gravatar(comment.user_id, size: 35) %>
+</div>
+<div>
+	<div>
+		<a href="#"><b><%= find_author(comment.user_id)%></b></a><br />
+	</div>
+	<%= comment.body %>
+	<%= link_to 'Delete', [comment.blog, comment],
+		:confirm => 'Are your sure?',
+		:method => :delete, style: "float: right;"%>
+</div>
+
+</div>
+<% end %>

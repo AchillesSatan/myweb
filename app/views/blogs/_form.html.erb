@@ -1,3 +1,4 @@
+<% @blog.tags.build %>
 <%= form_for(@blog) do |f| %>
 
   <% if @blog.errors.any? %>
@@ -16,7 +17,6 @@
     <div class="span9 offset4">
 
   <div class="field">
-    <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
 
@@ -28,7 +28,7 @@
     <%= f.hidden_field :content, id: "blog_content" %>
   </div>
 
-  <div id='editControls' style=' padding: 1px; margin: 1px;'>
+  <div id='editControls' style=' padding: 1px; margin: 1px; text-align: center;'>
               <div class='btn-group'>
                 <a class='btn' data-role='undo' href='#'>Undo</a>
                 <a class='btn' data-role='redo' href='#'>Repeat</a>
@@ -54,8 +54,8 @@
                 <a class='btn' data-role='indent' href='#'><i class='icon-indent-right'></i></a>
                 <a class='btn' data-role='outdent' href='#'><i class='icon-indent-left'></i></a>
               
-            
-              
+                <br />
+
                 <a class='btn' data-role='insertUnorderedList' href='#'>ul</a>
                 <a class='btn' data-role='insertOrderedList' href='#'>ol</a>
              
@@ -100,6 +100,9 @@
 
     </script>
 
+  <br />
+
+  <%= render :partial => "tags/form", :locals => {:form => f} %>
 
   <div class="actions">
     <%= f.submit 'Save Blog', name: "create_blog_button", onClick: "Btn_Click()", class: "btn btn-large btn-primary" %>
@@ -112,6 +115,10 @@
       objArt.value=strArt; 
   } 
   </script>
+
+
+<%= link_to 'Show', @blog %> |
+<%= link_to 'Back', blogs_path %>
 
   </div>
   </div>

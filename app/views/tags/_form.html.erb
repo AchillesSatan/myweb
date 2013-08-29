@@ -1,0 +1,13 @@
+<div>
+<table>
+	<tr><td>Tags:</td>
+<%= form.fields_for :tags do |tag_form| %>
+	<td><%= tag_form.text_field :name, style: "width: 100px; line-height: 30px;" %></td>
+	<% unless tag_form.object.nil? || tag_form.object.new_record? %>
+	<td style: "width: 200px;"><%= tag_form.check_box :_destroy, style:"vertical-align:center;"%>
+	<%= tag_form.label :_destroy, 'Remove'%></td>
+	<% end %>
+<% end %>
+</tr>
+</table>
+</div>

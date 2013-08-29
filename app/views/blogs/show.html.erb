@@ -32,8 +32,6 @@ function Blog_Show(){
 </script>
 <p id="top_menu" style="height: 25px;"></p>
 
-<p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="span9 offset4">
 
@@ -44,8 +42,10 @@ function Blog_Show(){
    <div style="color:rgb(188, 54, 10); font-size:14px; font-family: monospace, serif;">
     
     <br />
-    
+
     <span><%= get_month(@blog.updated_at.month) %>&nbsp;<%= @blog.updated_at.day %>,&nbsp;<%= @blog.updated_at.year %></span>
+
+    <span style="margin-left: 10px;"><%= @blog.tags.map{ |t| t.name }.join(", ") %></span>
 
     <span style="margin-left: 10px;"><%= find_author @blog.user_id %></span>
 
@@ -65,8 +65,18 @@ function Blog_Show(){
   </div>
 </p>
 
+<div class="comment">
+  <%= render "comments/comment" %>
+  <% if signed_in? %>
+    <%= render "comments/form" %>
+  <% end %>
+
+</div>
+
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
+
 <a style="display:block;" title="Scroll To Top" href="#top_menu" onclick="nasScrollTop(300); return false;" id="scroll_to_top">
 	To Top
 </a>

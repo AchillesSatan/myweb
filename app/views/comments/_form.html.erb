@@ -1,0 +1,13 @@
+<%= form_for([@blog, @blog.comments.build]) do |f| %>
+<div>
+	<%= gravatar_for current_user, size: 40, style: "float: left;" %>
+	<b><%= current_user.name %></b>
+</div>
+
+ 	<div>
+    	<%= f.text_field :body, style: "height:20px; line-height:20px; width:600px" %>
+    </div>
+    <div style="text-align: center;" >
+    	<%= f.submit class: "btn btn-normal btn-primary"%>
+  	</div>
+<% end %>

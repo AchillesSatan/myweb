@@ -16,6 +16,7 @@
 
 <h1>Create New Blog</h1>
 
+<% @blog.tags.build %>
 <%= form_for(@blog) do |f| %>
 
 
@@ -72,7 +73,7 @@
     </div>
 
   <div id='editor' style='height: 600px;' contenteditable></div>
-
+  <%= render :partial => "tags/form", :locals => {:form => f} %>
 
     <script>
 
@@ -93,6 +94,9 @@
       });
 
     </script>
+
+    <br />
+
 
 
   <div class="actions">

@@ -11,17 +11,19 @@
 
 <% @blogs.each do |blog| %>
   <div style="margin-top: 50px;">
-    <h3><%= blog.title %></h3><br />
+    <a href= "/blogs/<%= blog.id %>" class="blog_title"><h3><%= blog.title %></h3></a><br />
 
     <div style="color:rgb(188, 54, 10); font-size:14px; font-family: monospace, serif;">
     
-    <span><%= get_month(blog.updated_at.month) %>&nbsp;<%= blog.updated_at.day %>,&nbsp;<%= blog.updated_at.year %></span>
+    <span><%= get_month(blog.updated_at.month) %>&nbsp;<%= blog.updated_at.day %>,<%= blog.updated_at.year %></span>
+
+    <span style="margin-left: 10px;"><%= blog.tags.map{ |t| t.name }.join(", ") %></span>
 
     <span style="margin-left: 10px;"><%= find_author blog.user_id %></span>
 
     </div>
 
-    <br /><br />
+    <br />
     <div id="hidden_blog<%= blog.id %>" type="hidden" style="display: none;">
     <%= truncate(blog.content, length: 2000) %>
     </div>
@@ -35,15 +37,16 @@
     <p style="text-align:center">
     ......<br />
     </p>
-    <%= link_to 'Show', blog %></td>
-    <%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <%= link_to 'Destroy', blog, confirm: 'Are you sure?', method: :delete %></td>
+
+    <p style="color:rgb(188, 54, 10); font-size: 14px;">
+      <%= pluralize(blog.comments.count, "comment") %> so far.
+    </p>
+
   </div>
 <% end %>
 
 <br />
 
-<%= link_to 'New Blog', new_blog_path %>
 </div>
 </div>
 </div>

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
 
   has_many :blogs, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   attr_accessible :email, :name, :password, :password_confirmation, :auth
   validates :name, presence: true, length: { maximum: 50 }
