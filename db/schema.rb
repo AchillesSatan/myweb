@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828135726) do
+ActiveRecord::Schema.define(:version => 20130829123021) do
 
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(:version => 20130828135726) do
 
   add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
 
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "priority",   :default => 0
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.integer  "blog_id"
@@ -39,6 +47,18 @@ ActiveRecord::Schema.define(:version => 20130828135726) do
   end
 
   add_index "tags", ["blog_id"], :name => "index_tags_on_blog_id"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.text     "description"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "status",      :default => 0
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

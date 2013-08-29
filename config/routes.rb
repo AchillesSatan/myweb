@@ -1,4 +1,11 @@
 Myweb::Application.routes.draw do
+
+  resources :users
+
+  resources :projects
+
+  resources :tasks
+
   resources :blogs do
     resources :comments
   end
@@ -15,8 +22,6 @@ Myweb::Application.routes.draw do
     post 'user_search' => :search
     get  'user_search' => :show
   end
-
-  resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
 

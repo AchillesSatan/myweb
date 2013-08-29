@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :blogs, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :projects, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   attr_accessible :email, :name, :password, :password_confirmation, :auth
   validates :name, presence: true, length: { maximum: 50 }

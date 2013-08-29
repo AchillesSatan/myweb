@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="span5 offset6">
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= @project.priority %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @project.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+</div>
+</div>
