@@ -1,14 +1,14 @@
 class ProjectsController < ApplicationController
 
-  before_filter :authorize
-  before_filter :administor
-  before_filter :correct_user
+  skip_before_filter :authorize
+  skip_before_filter :administor
+  skip_before_filter :correct_user
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
-
+    @projects = Project.where("user_id=?", current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
 
     current_user.projects << @project
 
-    @project.user = current_user;
+    @project.user = current_user
 
     respond_to do |format|
       if @project.save

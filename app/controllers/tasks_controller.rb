@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
 
-    before_filter :authorize
-    before_filter :administor
-    before_filter :correct_user
+  skip_before_filter :authorize
+    skip_before_filter :administor
+    skip_before_filter :correct_user
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.where("user_id=?", current_user.id).order("end asc")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,6 +46,9 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
+
+    current_user.tasks << @task
+    @task.user = current_user
 
     respond_to do |format|
       if @task.save

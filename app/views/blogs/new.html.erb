@@ -19,8 +19,6 @@
 <% @blog.tags.build %>
 <%= form_for(@blog) do |f| %>
 
-
-
   <div class="field">
     <%= f.text_field :title, placeholder: "Input the title here." %>
   </div>
@@ -73,7 +71,8 @@
     </div>
 
   <div id='editor' style='height: 600px;' contenteditable></div>
-  <%= render :partial => "tags/form", :locals => {:form => f} %>
+
+
 
     <script>
 
@@ -97,7 +96,7 @@
 
     <br />
 
-
+  <%= render :partial => "tags/form", :locals => {:form => f} %>
 
   <div class="actions">
     <%= f.submit 'Save Blog', name: "create_blog_button", onClick: "Btn_Click()", class: "btn btn-large btn-primary" %>

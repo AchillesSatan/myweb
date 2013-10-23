@@ -47,7 +47,7 @@ class BlogsController < ApplicationController
   def create
     @user = User.find_by_email(session[:user_email])
 
-    @blog = Blog.new
+    @blog = Blog.new(params[:blog])
     @blog.title = params[:blog][:title]
     @blog.content = params[:blog][:content]
 

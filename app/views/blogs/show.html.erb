@@ -43,11 +43,11 @@ function Blog_Show(){
     
     <br />
 
-    <span><%= get_month(@blog.updated_at.month) %>&nbsp;<%= @blog.updated_at.day %>,&nbsp;<%= @blog.updated_at.year %></span>
+    <span><i class="icon-time"></i>&nbsp;<%= get_month(@blog.updated_at.month) %>&nbsp;<%= @blog.updated_at.day %>,&nbsp;<%= @blog.updated_at.year %></span>
 
-    <span style="margin-left: 10px;"><%= @blog.tags.map{ |t| t.name }.join(", ") %></span>
+    <span style="margin-left: 10px;"><i class="icon-tags"></i>&nbsp;<%= @blog.tags.map{ |t| t.name }.join(", ") %></span>
 
-    <span style="margin-left: 10px;"><%= find_author @blog.user_id %></span>
+    <span style="margin-left: 10px;"><i class="icon-user"></i>&nbsp;<%= find_author @blog.user_id %></span>
 
     </div>
 
@@ -73,9 +73,11 @@ function Blog_Show(){
 
 </div>
 
-
+<%if signed_in? %>
 <% if adminitted? %>
   <%= link_to 'Edit', edit_blog_path(@blog) %> |
+  <%= link_to 'Destroy', @blog, confirm: 'Are you sure?', method: :delete %> |
+<% end %>
 <% end %>
 <%= link_to 'Back', blogs_path %>
 
